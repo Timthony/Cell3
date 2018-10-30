@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(cell3)
+find_package(OpenCV)
+set(CMAKE_CXX_STANDARD 11)
+include_directories(${OpenCV_INCLUDE_DIRS})
+add_executable(cell3 main.cpp detect_level.cpp detect_level.h)
+target_link_libraries(cell3 ${OpenCV_LIBS})
