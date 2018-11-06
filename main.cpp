@@ -40,7 +40,7 @@ int chou_end = 319;                              //从多少帧结束抽
 vector<Point2f> points_end;                      //最后时刻，框内的点
 vector<Point2f> points_begin;                    //初始时刻，框内的点
 Point level_end;
-
+vector<Point2f> p_cur_all;                       //存放当前帧所有的点的位置信息
 //-----------------------【全局函数声明】------------------------
 float cal_density(int num_points);
 float cal_shape(vector<Point2f> p_begin, vector<Point2f> p_end);
@@ -74,7 +74,7 @@ static void onMouse(int event, int x, int y, int, void*)
             break;
     }
 }
-
+//光流计算函数
 void tracking_it(Mat &frame, Mat &output)
 {
     cvtColor(frame, gray, COLOR_BGR2GRAY);
@@ -146,6 +146,7 @@ void tracking_it(Mat &frame, Mat &output)
             selection_cur.height = selection.height;
             vector<Point2f> p_cur_rect_tmp;
             vector<Point2f> p_cur_rect;//存放在当前帧矩形框跟踪点的集合
+
             //判断当前帧原始的跟踪点是否在该矩形区域，如果在，则返回新的集合
             for (int m = 0; m < points1_cur.size(); m++)
             {
@@ -164,6 +165,7 @@ void tracking_it(Mat &frame, Mat &output)
             //最后时刻的参数
             if(cur_frame_num == (chou_begin+ks))
             {
+                p_cur_all = points1_cur;//原始点对应的所有点
                 level_end.x = level_cur.x-10;
                 level_end.y = level_cur.y;
                 num_end = p_cur_rect.size();
@@ -191,6 +193,7 @@ float cal_density(int num_points)
     return p_density;
 }
 //计算应变的函数,待修改
+
 float cal_shape(vector<Point2f> p_begin, vector<Point2f> p_end)
 {
     //计算应变，正应变，到矩形框右侧的距离的均值
@@ -213,6 +216,30 @@ float cal_shape(vector<Point2f> p_begin, vector<Point2f> p_end)
     float yingbian = (l_avg_end-l_avg)/float(selection.width);
     return yingbian;
 }
+//计算应变应该使用所有的点到液面的距离的均值
+float cal_strain(vector<Point2f> p_begin, vector<Point2f> p_end_all)
+{
+    float l_begin;//初始的间距值
+    float l_sum=0;
+    float l_avg;
+    for (int i = 0; i < p_begin.size(); i++)
+    {
+        float l_tmp = abs(selection.x+selection.width - p_begin[i].x);
+        l_sum = l_sum + l_tmp;
+    }
+    l_avg = l_sum/float(num_origin);
+    float l_sum_end = 0;
+    float l_avg_end;
+    for (int j = 0; j < p_end_all.size(); j++)
+    {
+        float l_tmp_end = abs(level_end.x - p_end_all[j].x);
+        l_sum_end = l_sum_end + l_tmp_end;
+    }
+    l_avg_end = l_sum_end/float(num_end);
+    float yingbian = (l_avg_end-l_avg)/float(selection.width);
+    return yingbian;
+}
+
 
 
 int main() {
@@ -268,7 +295,9 @@ int main() {
             float density_end = cal_density(num_end);
             cout<<"最后密度为："<<density_end<<endl;
             float yingbian = cal_shape(points_begin, points_end);
-            cout<<"最后应变为："<<yingbian<<endl;
+            cout<<"最后矩形框应变为："<<yingbian<<endl;
+            float yingbian2 = cal_strain(points_begin, p_cur_all);
+            cout<<"最后整体应变为："<<yingbian2<<endl;
         }
     }
     return 0;
