@@ -34,9 +34,9 @@ Mat frame;
 Point level_cur;                                 //存储当前液面的位置
 int num_origin;                                  //定义初始矩形框内点的个数
 int num_end;                                     //定义最后时刻矩形框内还有多少原始跟踪点
-int ks = 45;                                     //每隔多少帧暂停一次
-int chou_begin = 273;                            //从多少帧开始抽
-int chou_end = 319;                              //从多少帧结束抽
+int ks = 20;                                     //每隔多少帧暂停一次
+int chou_begin = 300;                            //从多少帧开始抽
+int chou_end = 320;                              //从多少帧结束抽
 vector<Point2f> points_end;                      //最后时刻，框内的点
 vector<Point2f> points_begin;                    //初始时刻，框内的点
 Point level_end;
@@ -44,6 +44,7 @@ vector<Point2f> p_cur_all;                       //存放当前帧所有的点�
 //-----------------------【全局函数声明】------------------------
 float cal_density(int num_points);
 float cal_shape(vector<Point2f> p_begin, vector<Point2f> p_end);
+float cal_strain(vector<Point2f> p_begin, vector<Point2f> p_end_all);
 //--------------------------------------------------------------------
 /*鼠标回调函数*/
 static void onMouse(int event, int x, int y, int, void*)
@@ -180,6 +181,8 @@ void tracking_it(Mat &frame, Mat &output)
                 cout<<"最后密度为："<<density_end<<endl;
                 float yingbian = cal_shape(points_begin, points_end);
                 cout<<"最后应变为："<<yingbian<<endl;
+                float yingbian2 = cal_strain(points_begin, p_cur_all);
+                cout<<"最后整体应变为："<<yingbian2<<endl;
             }
         }
     }
@@ -288,17 +291,17 @@ int main() {
             waitKey(0);
         }
         temp = frame.clone();
-        if(cur_frame_num == chou_begin + ks)
-        {
-            float density_begin = cal_density(num_origin);
-            cout<<"初始密度为："<<density_begin<<endl;
-            float density_end = cal_density(num_end);
-            cout<<"最后密度为："<<density_end<<endl;
-            float yingbian = cal_shape(points_begin, points_end);
-            cout<<"最后矩形框应变为："<<yingbian<<endl;
-            float yingbian2 = cal_strain(points_begin, p_cur_all);
-            cout<<"最后整体应变为："<<yingbian2<<endl;
-        }
+//        if(cur_frame_num == chou_begin + ks + 1)
+//        {
+//            float density_begin = cal_density(num_origin);
+//            cout<<"初始密度为："<<density_begin<<endl;
+//            float density_end = cal_density(num_end);
+//            cout<<"最后密度为："<<density_end<<endl;
+//            float yingbian = cal_shape(points_begin, points_end);
+//            cout<<"最后矩形框应变为："<<yingbian<<endl;
+//            float yingbian2 = cal_strain(points_begin, p_cur_all);
+//            cout<<"最后整体应变为："<<yingbian2<<endl;
+//        }
     }
     return 0;
 
