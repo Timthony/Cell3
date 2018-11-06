@@ -11,13 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcaa6478-644b-47b9-b9dd-2b9ca24026e9" name="Default" comment="修改应变的计算方法">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cell3.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cell3.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cell3" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cell3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/outdata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/outdata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="dcaa6478-644b-47b9-b9dd-2b9ca24026e9" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +35,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
-              <caret line="239" column="20" lean-forward="true" selection-start-line="239" selection-start-column="20" selection-end-line="239" selection-end-column="20" />
+            <state relative-caret-position="3413">
+              <caret line="298" column="55" lean-forward="true" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -182,23 +176,32 @@
       <workItem from="1540889614379" duration="21000" />
       <workItem from="1540950238305" duration="2495000" />
       <workItem from="1541399764106" duration="42000" />
-      <workItem from="1541466718857" duration="2869000" />
+      <workItem from="1541466718857" duration="3139000" />
     </task>
+    <task id="LOCAL-00001" summary="修改应变的计算方法">
+      <created>1541470269925</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541470269925</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32672000" />
+    <option name="totallyTimeSpent" value="32942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="866" y="23" width="1654" height="1494" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11608222" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3274648" />
       <window_info anchor="bottom" id="CMake" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50060457" side_tool="true" weight="0.20774648" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20774648" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993954" visible="true" weight="0.20774648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -418,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
-          <caret line="239" column="20" lean-forward="true" selection-start-line="239" selection-start-column="20" selection-end-line="239" selection-end-column="20" />
+        <state relative-caret-position="3413">
+          <caret line="298" column="55" lean-forward="true" selection-start-line="298" selection-start-column="55" selection-end-line="298" selection-end-column="55" />
         </state>
       </provider>
     </entry>

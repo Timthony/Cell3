@@ -288,7 +288,7 @@ int main() {
             waitKey(0);
         }
         temp = frame.clone();
-        if(cur_frame_num == chou_begin + ks + 1)
+        if(cur_frame_num == chou_begin + ks)
         {
             float density_begin = cal_density(num_origin);
             cout<<"初始密度为："<<density_begin<<endl;
